@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Добрый мастер</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <div>
+                <img src="img/logo.svg" alt="logo">
+                <h1>ДОБРЫЙ МАСТЕР</h1>
+            </div>
+            <nav class="nav">
+                <a href="#services_and_prices">УСЛУГИ И ЦЕНЫ</a>
+                <a href="#portfolio">ПОРТФОЛИО</a>
+                <a href="#about">О МАСТЕРЕ</a>
+                <a href="#reviews">ОТЗЫВЫ</a>
+                <a href="#contacts">КОНТАКТЫ</a>
+            </nav>
+        </header>
+        <div id="main">
+            <p>
+                <span class="large">Ремонт квартир<br>в котором вы уверены</span> <br>Полный цикл работ: от дизайна до сдачи под ключ с гарантией качества и сроков.
+            </p>
+            <button class = "button">Рассчитать стоимость</button>
+        </div>
+        <div id="services_and_prices" class="light-section">
+            <h1>Услуги и цены</h1>
+            <div class="services">
+                <article>
+                    <img src="img/1.png" alt="КОСМЕТИЧЕСКИЙ РЕМОНТ">
+                    <p><span>КОСМЕТИЧЕСКИЙ РЕМОНТ</span><br>Какой-то текст</p>
+                    <button class="button">Подробнее</button>
+                </article>
+                <article>
+                    <img src="img/2.png" alt="КАПИТАЛЬНЫЙ РЕМОНТ">
+                    <p><span>КАПИТАЛЬНЫЙ РЕМОНТ</span><br>Какой-то текст</p>
+                    <button class="button">Подробнее</button>
+                </article>
+                <article>
+                    <img src="img/3.png" alt="ДИЗАЙН-ПРОЕКТ">
+                    <p><span>ДИЗАЙН-ПРОЕКТ</span><br>Какой-то текст</p>
+                    <button class="button">Подробнее</button>
+                </article>
+            </div>
+        </div>
+        <div id="portfolio" class="dark-section">
+            <h1>Портфолио</h1>
+            <div class="portfolio-wrapper">
+                <button class="button-left" onclick="scrollPortfolio('left')"><img src="img/left_button.svg" alt="Назад"></button>
+                <div class="portfolio-carousel">
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+                <article>
+                    <img src="img/1-port.png" alt="Роккоко">
+                    <p><span>Роккоко</span><br>Какой-то текст</p>
+                    <button class="button">Открыть</button>
+                </article>
+            </div>
+                <button class="button-right" onclick="scrollPortfolio('right')"><img src="img/right_button.svg" alt="Вперёд"></button>
+            </div>
+        </div>
+        <div id="about" class="light-section">
+                <h1>О мастере</h1>
+                <div id="about-content">
+                <img src="img/master.png" alt="Мастер">
+                <p><span id="master-image">Панасенко Дмитрий</span><br>
+Я начал заниматься ремонтом в 2012 году — тогда помогал соседям и знакомым просто потому, что умел и любил это делать. Постепенно «сарафанное радио» сделало своё дело, и ремонт стал моей основной работой.<br>Сегодня за плечами — более 200 квартир, довольные клиенты по всей Москве и ни одного брошенного объекта.<br>Я работаю один, без бригады и посредников. Это значит, что вы всегда знаете, кто в вашей квартире и кто несёт ответственность за результат. Никаких сюрпризов — только честная цена, чёткие сроки и аккуратная работа.</p>
+                </div>
+        </div>
+        <div id="reviews" class="dark-section">
+                <h1>Отзывы</h1>
+                <div class="grid-reviews">
+                        <article>
+                            <p class="name-review">Какое-то имя</p>
+                            <p class = "review">Какой-то текст</p>
+                        </article>
+                        <article class="npl2">
+                            <p class="name-review">Какое-то имя</p>
+                            <p class = "review">Какой-то текст</p>
+                        </article>
+                        <article>
+                            <p class="name-review">Какое-то имя</p>
+                            <p class = "review">Какой-то текст</p>
+                        </article>
+                        <article class="npl2">
+                            <p class="name-review">Какое-то имя</p>
+                            <p class = "review">Какой-то текст</p>
+                        </article>
+                        <article>
+                            <p class="name-review">Какое-то имя</p>
+                            <p class = "review">Какой-то текст</p>
+                        </article>
+                        <article class="npl2">
+                            <p class="name-review">Какое-то имя</p>
+                            <p class = "review">Какой-то текст</p>
+                        </article>
+                </div>
+        </div>
+        <div id="contacts" class="light-section">
+            <h1>Контакты</h1>
+            <div class="contacts-content">
+            <form>
+                    <input type="text" placeholder="Ваше имя" id="name">
+                    <input type="text" placeholder="Ваш телефон" id="phone">
+                    <textarea placeholder="Ваше сообщение" id="message"></textarea>
+                    <button class="button">Оставить заявку</button>
+            </form>
+            <div class="contacts-links">
+                <div><img src="img/phone.svg" alt="Телефон"><a href="#">+7 (999) 999-99-99</a></div>
+                <div><img src="img/telegram.svg" alt="Телеграм"><a href="#">@master</a></div>
+                <div><img src="img/whatsapp.svg" alt="WhatsApp"><a href="#">+7 (999) 999-99-99</a></div>
+                <div><img src="img/vk.svg" alt="ВКонтакте"><a href="#">vk.com/master</a></div>
+                <div><img src="img/Max-messenger.svg" alt="Max"><a href="#">@master</a></div>
+            </div>
+            </div>
+        </div>
+        <a class="button-up" href="#"><img src="img/left_button.svg" alt="Наверх"></a>
+            <footer class="dark-section">
+                    <p style="color: white;">© 2026 Добрый мастер</p>
+                        <a href="#">Политика конфиденциальности</a>
+            </footer>
+        
+        
+        <script>
+            function scrollPortfolio(direction) {
+            const container = document.querySelector('.portfolio-carousel');
+            const scrollAmount = 360; // Ширина карточки (330) + gap (30)
+
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+            
+    </script>
+    </body>
+</html>

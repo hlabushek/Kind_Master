@@ -1,0 +1,376 @@
+html {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.6;
+    color: #333;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2A2A2A;
+    max-height: 90px;
+    border-bottom-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    position: -webkit-sticky; /* Для Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header h1 {
+    color: #D45800;
+    font-size: 2.7rem;
+    font-weight: 650;
+}
+header div{
+    display : flex;
+    gap: 25px;
+    flex-basis: 28%;
+    margin-left: 30px;
+    align-items: center;
+}
+header nav{
+    font-family: Inter;
+    display: flex;
+    gap: 100px;
+    align-content:space-between;
+    flex-basis: 72%;
+    align-items: center;
+    justify-content: center;
+}
+header a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 650;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+header img{
+    width: 67px;
+    height: auto;
+}
+header a:hover{
+    color: #D45800;
+}
+#main{
+    background-image: url(background.png);
+    height: 900px;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+    border-radius: 17px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#main p,button{
+    color: white;
+    width: 60%;
+    margin-left: 7%;
+    font-family: 'Montserrat', sans-serif;
+}
+#main p{
+    font-size: 2rem;
+    line-height: 1.3;
+}
+#main p span{
+    font-size: 5.3rem;
+    font-weight: 700;
+}
+#main button{
+    font-size: 1.4rem;
+    font-weight: 650;
+    margin-top: 30px;
+    width: 20%;
+    padding: 27px 33px;
+}
+.button{ 
+    background-color: #D45800;
+    border-radius: 28px;
+    border:none;
+    cursor: pointer;
+}
+.light-section{
+    background: #665F5A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+.light-section h1{
+    color: white;
+    font-size: 3rem;
+    font-weight: 650;
+    text-align: center;
+}
+#services_and_prices .services{
+    display: flex;
+    gap: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+article{
+    background-color: #2A2A2A;
+    border-radius: 17px;
+    padding: 20px;
+    width: 330px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+    box-shadow: #121212 0px 4px 8px, #121212 0px 6px 20px;
+}
+article img{
+    width: 100%;
+    height: auto;
+}
+article p{
+    font-size: 0.9rem;
+    text-align: left;
+    margin-top: 20px;
+    align-self: flex-start;
+    color: #C5C5C5;
+}
+article p span{
+    font-size: 1.1rem;
+    font-weight: 650;
+    color: white;
+}
+article button{
+    font-size: 1.1rem;
+    width: 100%;
+    align-self: center;
+    margin: 0;
+    padding: 13px 19px;
+    margin-bottom: 15 px;
+}
+.dark-section{
+    background: #433F3B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dark-section h1{
+    color: white;
+    font-size: 3rem;
+    font-weight: 650;
+    text-align: center;
+}
+.portfolio-wrapper {
+    position: relative;
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+/* 2. Сама лента */
+.portfolio-carousel {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    padding: 40px 10%; 
+    
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; 
+}
+
+.portfolio-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.button-left, .button-right {
+    position: absolute;     
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 50px;
+}
+.button-left {
+    left: 5px; 
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.button-right {
+    right: 10px;
+    margin-right: 10px;
+    margin-left: 0;
+}
+.button-left img, .button-right img {
+    width: 50px;
+    height: auto;
+    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
+}
+.portfolio-carousel article {
+    flex-shrink: 0;
+    width: 330px;
+}
+#about-content{
+    width: 100%;
+    display: flex;
+    gap: 150px;
+    justify-content:center;
+}
+#about-content img {
+    width: 460px;
+    min-width: 460px;
+    flex: 0 0 460px; /* ← Явно задаём: не расти, не сжиматься, базовая ширина 460px */
+    height: auto;
+    object-fit: contain; /* ← важно, если важно сохранить пропорции */
+}
+#about-content p{
+    font-family: 'Inter', sans-serif;
+    width: 34%;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #C5C5C5;
+}
+#about-content p span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 650;
+    color: white;
+}
+#reviews .grid-reviews{
+    width: 100%;
+    display: grid;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    grid-template-columns: repeat(3, 400px); 
+    row-gap: 80px;
+    column-gap: 50px;
+    justify-content: center;
+    
+}
+#reviews .grid-reviews article{
+    width: 100%;
+    max-width: 400px;
+    height: 180px;
+    max-height: 180px;
+    background: #D5D5D5;
+    padding: 10px;
+    text-align: center;
+    border-radius: 17px;
+    padding-left: 35px;
+    padding-top: 20px;
+    line-height: 0.8rem;
+}
+#reviews .grid-reviews article p{
+    font-family: 'Montserrat', sans-serif;
+    color: #4E4E4E;
+    font-size: 1rem;
+    margin: 10px 0;
+    font-weight: 650;
+}
+#reviews .grid-reviews article p.name-review{
+    font-size: 1.3rem;
+    color: #363636;
+    margin-bottom: 5px;
+}
+#reviews .grid-reviews .npl2{
+    background: #A1A1A1;
+}
+.contacts-content{
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 200px;
+}
+.contacts-content form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-basis: 30%;
+}
+.contacts-content form input, textarea{
+    background-color: #595959;
+    padding: 15px;
+    border-radius: 12px;
+    border: #323232 2px solid;
+    font-size: 1.1rem;
+}
+::placeholder{
+    color: #363636;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: underline;
+}
+.contacts-content form button{
+    margin-left: 0;
+    font-weight: 600;
+    background-color: #D45800;
+    border-radius: 17px;
+    border:none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 15px;
+    width: 100%;
+}
+.contacts-content #message{
+    height: 150px;
+    resize: none;
+}
+.contacts-content .contacts-links{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contacts-content .contacts-links div{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.contacts-content .contacts-links div a{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.contacts-content .contacts-links div img{
+    width: 63px;
+    height: auto;
+}
+.button-up{
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    rotate: 90deg;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    border-radius: 50%;
+    border:none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;
+}
+.button-up img{
+    width: 100%;
+    height: auto;
+}
