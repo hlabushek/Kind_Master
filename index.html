@@ -10,24 +10,34 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
     <body>
+        
         <header class="header">
-            <div>
+            <div class = "logo">
                 <img src="img/logo.svg" alt="logo">
                 <h1>ДОБРЫЙ МАСТЕР</h1>
             </div>
-            <nav class="nav">
-                <a href="#services_and_prices">УСЛУГИ И ЦЕНЫ</a>
+
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav" id="nav">
+                <a href="#services_and_prices" id="serv">УСЛУГИ И ЦЕНЫ</a>
                 <a href="#portfolio">ПОРТФОЛИО</a>
                 <a href="#about">О МАСТЕРЕ</a>
                 <a href="#reviews">ОТЗЫВЫ</a>
                 <a href="#contacts">КОНТАКТЫ</a>
             </nav>
-        </header>
+        </header>            
+        <div class="First-screen">
         <div id="main">
             <p>
                 <span class="large">Ремонт квартир<br>в котором вы уверены</span> <br>Полный цикл работ: от дизайна до сдачи под ключ с гарантией качества и сроков.
             </p>
             <button class = "button">Рассчитать стоимость</button>
+        </div>
         </div>
         <div id="services_and_prices" class="light-section">
             <h1>Услуги и цены</h1>
@@ -176,6 +186,30 @@
                 container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             }
         }
+            const burger = document.getElementById('burger');
+            const nav = document.getElementById('nav');
+
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('active'); // Открываем меню
+                burger.classList.toggle('open'); // Превращаем полоски в крестик
+                
+                // Блокируем скролл страницы при открытом меню
+                if (nav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Закрываем меню при клике на любую ссылку
+            const navLinks = document.querySelectorAll('.nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    burger.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                });
+            });
             
     </script>
     </body>
