@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Добрый мастер</title>
+        <icon href="img/logo.svg">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,10 +13,10 @@
     <body>
         
         <header class="header">
-            <div class = "logo">
+                <a href="/" class="logo">
                 <img src="img/logo.svg" alt="logo">
-                <h1>ДОБРЫЙ МАСТЕР</h1>
-            </div>
+                <h2>ДОБРЫЙ МАСТЕР</h2>
+                </a>
 
             <div class="burger" id="burger">
                 <span></span>
@@ -40,7 +41,7 @@
         </div>
         </div>
         <div id="services_and_prices" class="light-section">
-            <h1>Услуги и цены</h1>
+            <h2>Услуги и цены</h2>
             <div class="services">
                 <article>
                     <img src="img/1.png" alt="КОСМЕТИЧЕСКИЙ РЕМОНТ">
@@ -60,7 +61,7 @@
             </div>
         </div>
         <div id="portfolio" class="dark-section">
-            <h1>Портфолио</h1>
+            <h2>Портфолио</h2>
             <div class="portfolio-wrapper">
                 <button class="button-left" onclick="scrollPortfolio('left')"><img src="img/left_button.svg" alt="Назад"></button>
                 <div class="portfolio-carousel">
@@ -114,7 +115,7 @@
             </div>
         </div>
         <div id="about" class="light-section">
-                <h1>О мастере</h1>
+                <h2>О мастере</h2>
                 <div id="about-content">
                 <img src="https://psv4.userapi.com/s/v1/d2/5dZlxdgwhOAfblpO3UXHRJoNkC7RjqGqP1rnjNQ02HqOxCRY7Ar5KKhuXgqXTHpHM46nJFnUwdP-G70BGwtnwPeGbx0QhHdx-vUKeerMBz92jq9gS46YDVNhP56mwhbENuwWDZ7NtUGX/Master.png" alt="Мастер">
                 <p><span id="master-image">Панасенко Дмитрий</span><br>
@@ -122,7 +123,7 @@
                 </div>
         </div>
         <div id="reviews" class="dark-section">
-                <h1>Отзывы</h1>
+                <h2>Отзывы</h2>
                 <div class="grid-reviews">
                         <article>
                             <p class="name-review">Какое-то имя</p>
@@ -151,7 +152,7 @@
                 </div>
         </div>
         <div id="contacts" class="light-section">
-            <h1>Контакты</h1>
+            <h2>Контакты</h2>
             <div class="contacts-content">
             <form>
                     <input type="text" placeholder="Ваше имя" id="name">
@@ -178,7 +179,7 @@
         <script>
             function scrollPortfolio(direction) {
             const container = document.querySelector('.portfolio-carousel');
-            const scrollAmount = 360; // Ширина карточки (330) + gap (30)
+            const scrollAmount = container.offsetWidth * 0.2; // Ширина карточки (330) + gap (30)
 
             if (direction === 'left') {
                 container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });

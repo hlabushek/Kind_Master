@@ -7,14 +7,19 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
-
+:root{
+    --main-color: #D45800;
+    --second-color: #665F5A;
+    --third-color: #2A2A2A;
+    --fourth-color: #121212;
+}
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
     line-height: 1.6;
     color: #333;
-    background-color: #121212;
+    background-color: var(--fourth-color);
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
@@ -22,7 +27,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    background-color: #2A2A2A;
+    background-color: var(--third-color);
     max-height: 90px;
     border-bottom-left-radius: 17px;
     border-bottom-right-radius: 17px;
@@ -31,18 +36,20 @@ header {
     top: 0;
     z-index: 1000;
 }
-header h1 {
-    color: #D45800;
+header h2 {
+    color: var(--main-color);
     white-space: nowrap;
     font-weight: 650;
     font-size: clamp(1.5rem, 3vw, 3rem);
 }
-header div{
+header .logo{
     display : flex;
     gap: clamp(20px, 2vw, 50px);
     flex-basis: 28%;
     margin-left: clamp(20px, 4vw, 50px);
     align-items: center;
+    text-decoration: none;
+    margin-left: 0 !important;
 }
 header nav{
     font-family: Inter;
@@ -53,7 +60,7 @@ header nav{
     align-items: center;
     justify-content: center;
 }
-header a{
+header nav a{
     color: white;
     text-decoration: none;
     font-size: clamp(1rem, 1.5vw, 1.3rem);
@@ -67,7 +74,7 @@ header img{
     height: auto;
 }
 header a:hover{
-    color: #D45800;
+    color: var(--main-color);
 }
 header #serv{
     margin-left: 4vw;
@@ -136,19 +143,19 @@ header .logo img{
     width: max-content;
 }
 .button{ 
-    background-color: #D45800;
+    background-color: var(--main-color);
     border-radius: 28px;
     border:none;
     cursor: pointer;
 }
 .light-section{
-    background: #665F5A;
+    background: var(--second-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 50px;
 }
-.light-section h1{
+.light-section h2{
     color: white;
     font-weight: 650;
     text-align: center;
@@ -161,7 +168,7 @@ header .logo img{
     margin-bottom: 50px;
 }
 article{
-    background-color: #2A2A2A;
+    background-color: var(--third-color);
     border-radius: 17px;
     padding: 20px;
     width: clamp(300px, 24vw, 400px);
@@ -169,7 +176,7 @@ article{
     flex-direction: column;
     align-items: center;
     padding-bottom: 10px;
-    box-shadow: #121212 0px 4px 8px, #121212 0px 6px 20px;
+    box-shadow: var(--fourth-color) 0px 4px 8px, var(--fourth-color) 0px 6px 20px;
 }
 article img{
     width: 100%;
@@ -201,7 +208,7 @@ article button{
     flex-direction: column;
     align-items: center;
 }
-.dark-section h1{
+.dark-section h2{
     color: white;
     font-size: clamp(1.5rem, 2.5vw, 3rem);
     font-weight: 650;
@@ -357,7 +364,7 @@ article button{
 .contacts-content form button{
     margin-left: 0;
     font-weight: 600;
-    background-color: #D45800;
+    background-color: var(--main-color);
     border-radius: 17px;
     border:none;
     cursor: pointer;
@@ -419,7 +426,7 @@ article button{
         right: -100%; /* Прячем меню за край экрана */
         width: 100%;
         height: 100vh;
-        background-color: #2A2A2A;
+        background-color: var(--third-color);
         gap: 40px;
         transition: 0.4s ease;
         z-index: 1000;
