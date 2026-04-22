@@ -86,7 +86,7 @@ header #serv{
     margin-left: 0 !important;
 }
 * {
-  outline: 1px solid red !important;
+  outline: 1px solid transparent !important;
 }
 .burger span {
     display: block;
