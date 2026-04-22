@@ -85,9 +85,9 @@ header #serv{
     align-items: center;
     margin-left: 0 !important;
 }
-* {
-  outline: 1px solid transparent !important;
-}
+/* {
+  outline: 1px solid red !important;
+}*/
 .burger span {
     display: block;
     width: 35px;
@@ -95,6 +95,12 @@ header #serv{
     background-color: #D45800; /* Цвет под ваш логотип */
     border-radius: 2px;
     transition: 0.3s ease;
+}
+.logo {
+    margin-left: 0;
+}
+header .logo img{
+    margin-left: clamp(5px, 1vw, 30px);
 }
 #main{
     background-image: url(background.png);
@@ -428,6 +434,10 @@ article button{
     .burger {
         display: flex; /* Показываем иконку */
         margin-left: clamp(5px, 1vw, 0px) !important; /* Сбрасываем отступ для мобилки */
+        margin-right: 0;
+    }
+    #burger {
+        width: clamp(20px, 3vw, 100px) !important;
     }
 
     /* Сбрасываем ваши специфичные отступы для мобилки */
@@ -485,6 +495,7 @@ article button{
         align-items: center;
         gap: 30px;
     }
+    
     header .logo{
         column-gap: clamp(5px, 2vw, 30px);
     }
