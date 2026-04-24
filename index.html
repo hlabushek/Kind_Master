@@ -40,7 +40,7 @@
             <button class = "button">Рассчитать стоимость</button>
         </div>
         </div>
-        <div id="services_and_prices" class="light-section">
+        <div id="services_and_prices" class="light-section" class="reveal">
             <h2>Услуги и цены</h2>
             <div class="services">
                 <article>
@@ -60,7 +60,7 @@
                 </article>
             </div>
         </div>
-        <div id="portfolio" class="dark-section">
+        <div id="portfolio" class="dark-section" class="reveal">
             <h2>Портфолио</h2>
             <div class="portfolio-wrapper">
                 <button class="button-left" onclick="scrollPortfolio('left')"><img src="img/left_button.svg" alt="Назад"></button>
@@ -68,7 +68,12 @@
                 <article>
                     <img src="img/1-port.png" alt="Роккоко">
                     <p><span>Роккоко</span><br>Какой-то текст</p>
-                    <button class="button">Открыть</button>
+                    <button class="button" onclick="openModal({
+                        title: 'Ремонт в стиле Роккоко',
+                        images: ['img/1-port.png', 'img/2.png', 'img/1.png', 'img/3.png'],
+                        features: ['Площадь: 60 м²', 'Срок: 4 недели', 'Бюджет: 450к'],
+                        works: ['Выровняли стены', 'Заменили проводку', 'Лепнина на потолке']
+                    })">Открыть</button>
                 </article>
                 <article>
                     <img src="img/1-port.png" alt="Роккоко">
@@ -113,8 +118,35 @@
             </div>
                 <button class="button-right" onclick="scrollPortfolio('right')"><img src="img/right_button.svg" alt="Вперёд"></button>
             </div>
+            <div id="portfolio-modal" class="modal-overlay">
+                
+        <div class="modal-container">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-grid">
+                <div class="modal-gallery">
+                    <div class="main-img-wrap">
+                        <button id="button-left" onclick="NextImg('left')"><img src="img/left_button.svg" alt="Назад"></button>
+                        <img id="modal-main-img" src="" alt="Фото">
+                        <button id="button-right" onclick="NextImg('right')"><img src="img/right_button.svg" alt="Вперед"></button>
+                    </div>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Название</h2>
+                    <div class="info-block">
+                        <h3>Характеристики:</h3>
+                        <ul id="modal-features"></ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>Что сделали:</h3>
+                        <ul id="modal-works"></ul>
+                    </div>
+                    <button id="button-portfolio" class="button" style="width:100%; padding: 15px;">Хочу так же</button>
+                </div>
+            </div>
         </div>
-        <div id="about" class="light-section">
+    </div>
+        </div>
+        <div id="about" class="light-section" class="reveal">
                 <h2>О мастере</h2>
                 <div id="about-content">
                 <img src="https://psv4.userapi.com/s/v1/d2/5dZlxdgwhOAfblpO3UXHRJoNkC7RjqGqP1rnjNQ02HqOxCRY7Ar5KKhuXgqXTHpHM46nJFnUwdP-G70BGwtnwPeGbx0QhHdx-vUKeerMBz92jq9gS46YDVNhP56mwhbENuwWDZ7NtUGX/Master.png" alt="Мастер">
@@ -151,7 +183,7 @@
                         </article>
                 </div>
         </div>
-        <div id="contacts" class="light-section">
+        <div id="contacts" class="light-section" class="reveal">
             <h2>Контакты</h2>
             <div class="contacts-content">
             <form>
@@ -177,6 +209,72 @@
         
         
         <script>
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            const modal = document.getElementById('portfolio-modal');
+            function openModal(data) {
+                document.getElementById('modal-title').innerText = data.title;
+                document.getElementById('modal-main-img').src = data.images[0]; // Первое изображение
+                document.getElementById('modal-main-img').dataset.images = JSON.stringify(data.images); // Сохраняем все изображения для навигации
+                console.log(data.images);
+                
+                const featuresList = document.getElementById('modal-features');
+                featuresList.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+                
+                const worksList = document.getElementById('modal-works');
+                worksList.innerHTML = data.works.map(w => `<li>${w}</li>`).join('');
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Click Outside (Закрытие при клике на фон)
+            window.onclick = function(event) {
+                if (event.target == modal) closeModal();
+            }
+
+            // Закрытие на Esc
+            window.onkeydown = function(e) {
+                if (e.key === "Escape") closeModal();
+            }
+            function NextImg(dir) {
+            const img = document.getElementById('modal-main-img');
+            const images = JSON.parse(img.dataset.images); // Получаем массив изображений
+            const currentSrc = img.src;
+
+            // Получаем имя текущего файла (последняя часть URL)
+            const getCurrentIndex = () => {
+                const currentFile = currentSrc.split('/').pop();
+                return images.findIndex(path => path.split('/').pop() === currentFile);
+            };
+
+            const currentIndex = getCurrentIndex();
+
+            if (currentIndex === -1) return; // Изображение не найдено в списке
+
+            let newIndex;
+            if (dir === 'left' && currentIndex > 0) {
+                newIndex = currentIndex - 1;
+            } else if (dir === 'right' && currentIndex < images.length - 1) {
+                newIndex = currentIndex + 1;
+            } else {
+                return; // Выход за границы
+            }
+
+            img.src = images[newIndex];
+        }
             function scrollPortfolio(direction) {
             const container = document.querySelector('.portfolio-carousel');
             const scrollAmount = container.offsetWidth * 0.2; // Ширина карточки (330) + gap (30)
