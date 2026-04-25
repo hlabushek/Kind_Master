@@ -75,7 +75,7 @@ const observer = new IntersectionObserver((entries) => {
         }
             function scrollPortfolio(direction) {
             const container = document.querySelector('.portfolio-carousel');
-            const scrollAmount = container.offsetWidth * 0.2; // Ширина карточки (330) + gap (30)
+            const scrollAmount = 360; // Ширина карточки (330) + gap (30)
 
             if (direction === 'left') {
                 container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
