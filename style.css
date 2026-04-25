@@ -6,12 +6,17 @@ html {
 
 *, *:before, *:after {
     box-sizing: inherit;
+    -webkit-tap-highlight-color: transparent;
 }
 :root{
     --main-color: #D45800;
     --second-color: #665F5A;
     --third-color: #2A2A2A;
     --fourth-color: #121212;
+}
+.button:active {
+    filter:brightness(0.7) !important;
+    transition: 0.1;
 }
 body {
     margin: 0;
@@ -24,10 +29,10 @@ body {
     flex-direction: column;
     overflow-x: hidden;
 }
-button {
+.button {
     transition: background-color 0.3s ease;
 }
-button:hover {
+.button:hover {
     transform: scale(1.03);
     transition: transform 0.2s;
 }
@@ -459,6 +464,9 @@ article button{
     width: 100%;
     height: auto;
 }
+button:active {
+    outline: none;
+}
 #button-left, #button-right {
             width: clamp(30px, 3.7vw, 50px);
             position: absolute;
@@ -570,8 +578,35 @@ article button{
 #modal-main-img img{
     align-self: center;
 }
+/* Класс для анимации смены фото */
+.image-fade {
+    animation: imgFade 0.4s ease-out;
+}
+
+@keyframes imgFade {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 /* Мобильная адаптация */
 @media (max-width: 1024px) {
+    button, 
+    a, 
+    .burger, 
+    .button-up {
+        /* Запрещает выделение текста на кнопках при долгом нажатии */
+        -webkit-user-select: none; 
+        user-select: none;
+        
+        /* Убирает стандартные стили кнопок в iOS (могут скругляться сильнее нужного) */
+        -webkit-appearance: none;
+        appearance: none;
+    }
     header nav {
         display: none; /* Скрываем обычную навигацию */
         flex-direction: column;
@@ -684,6 +719,23 @@ article button{
     }
     .modal-grid{
         grid-template-columns: 1fr !important;
+    }
+    .modal-container{
+        padding:clamp(4px, 3vw, 30px);
+        padding-top: 40px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+    #modal-title {
+        font-size: clamp(1.3rem, 6vw, 2.7rem);
+    }
+    #button-portfolio{
+        font-size: clamp(1rem, 3vw, 1.3rem);
+    }
+    .modal-close {
+        top: 0;
+        right:10px;
+        height: 25px;
     }
     #reviews .grid-reviews{
         row-gap: 40px;
