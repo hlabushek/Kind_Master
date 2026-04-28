@@ -9,32 +9,20 @@ const observer = new IntersectionObserver((entries) => {
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             const modal = document.getElementById('portfolio-modal');
             function openModal(data) {
-            document.getElementById('modal-title').innerText = data.title;
-            const mainImg = document.getElementById('modal-main-img');
-            mainImg.src = data.images[0];
-            mainImg.dataset.images = JSON.stringify(data.images);
-            
-            // Скрываем или показываем стрелки в зависимости от кол-ва фото
-            const leftBtn = document.getElementById('button-left');
-            const rightBtn = document.getElementById('button-right');
-            
-            if (data.images.length <= 1) {
-                leftBtn.style.display = 'none';
-                rightBtn.style.display = 'none';
-            } else {
-                leftBtn.style.display = 'block';
-                rightBtn.style.display = 'block';
+                document.getElementById('modal-title').innerText = data.title;
+                document.getElementById('modal-main-img').src = data.images[0]; // Первое изображение
+                document.getElementById('modal-main-img').dataset.images = JSON.stringify(data.images); // Сохраняем все изображения для навигации
+                console.log(data.images);
+                
+                const featuresList = document.getElementById('modal-features');
+                featuresList.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+                
+                const worksList = document.getElementById('modal-works');
+                worksList.innerHTML = data.works.map(w => `<li>${w}</li>`).join('');
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-
-            const featuresList = document.getElementById('modal-features');
-            featuresList.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
-            
-            const worksList = document.getElementById('modal-works');
-            worksList.innerHTML = data.works.map(w => `<li>${w}</li>`).join('');
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
 
             function closeModal() {
                 modal.classList.remove('active');
@@ -87,7 +75,7 @@ const observer = new IntersectionObserver((entries) => {
         }
             function scrollPortfolio(direction) {
             const container = document.querySelector('.portfolio-carousel');
-            const scrollAmount = 360; // Ширина карточки (330) + gap (30)
+            const scrollAmount = container.offsetWidth * 0.2; // Ширина карточки (330) + gap (30)
 
             if (direction === 'left') {
                 container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -119,57 +107,4 @@ const observer = new IntersectionObserver((entries) => {
                     document.body.style.overflow = 'auto';
                 });
             });
-            const typeSelect = document.getElementById('repair-type');
-            const areaInput = document.getElementById('area');
-            const areaRange = document.getElementById('area-range');
-            const extraCheckboxes = document.querySelectorAll('.extra-option');
-            const totalPriceElement = document.getElementById('total-price');
-
-            function calculate() {
-                const basePrice = parseInt(typeSelect.value);
-                const area = parseFloat(areaInput.value) || 0;
-                
-                let extraPrice = 0;
-                extraCheckboxes.forEach(cb => {
-                    if (cb.checked) {
-                        extraPrice += parseInt(cb.value);
-                    }
-                });
-
-                const total = area * (basePrice + extraPrice);
-                
-                // Красивая анимация цифр
-                animateValue(totalPriceElement, parseInt(totalPriceElement.innerText.replace(/\s/g, '')), total, 500);
-            }
-
-            // Связка инпута и ползунка
-            areaInput.addEventListener('input', () => {
-                areaRange.value = areaInput.value;
-                calculate();
-            });
-
-            areaRange.addEventListener('input', () => {
-                areaInput.value = areaRange.value;
-                calculate();
-            });
-
-            typeSelect.addEventListener('change', calculate);
-            extraCheckboxes.forEach(cb => cb.addEventListener('change', calculate));
-
-            // Функция для плавного счета цифр
-            function animateValue(obj, start, end, duration) {
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    const value = Math.floor(progress * (end - start) + start);
-                    obj.innerHTML = value.toLocaleString('ru-RU');
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    }
-                };
-                window.requestAnimationFrame(step);
-            }
-
-            // Начальный расчет
-            calculate();
+            
