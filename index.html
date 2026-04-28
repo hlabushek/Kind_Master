@@ -43,22 +43,37 @@
         <div id="services_and_prices" class="light-section" class="reveal">
             <h2>Услуги и цены</h2>
             <div class="services">
-                <article>
-                    <img src="img/1.png" alt="КОСМЕТИЧЕСКИЙ РЕМОНТ">
-                    <p><span>КОСМЕТИЧЕСКИЙ РЕМОНТ</span><br>Какой-то текст</p>
-                    <button class="button">Подробнее</button>
-                </article>
-                <article>
-                    <img src="img/2.png" alt="КАПИТАЛЬНЫЙ РЕМОНТ">
-                    <p><span>КАПИТАЛЬНЫЙ РЕМОНТ</span><br>Какой-то текст</p>
-                    <button class="button">Подробнее</button>
-                </article>
-                <article>
-                    <img src="img/3.png" alt="ДИЗАЙН-ПРОЕКТ">
-                    <p><span>ДИЗАЙН-ПРОЕКТ</span><br>Какой-то текст</p>
-                    <button class="button">Подробнее</button>
-                </article>
-            </div>
+            <article>
+                <img src="img/1.png" alt="КОСМЕТИЧЕСКИЙ РЕМОНТ">
+                <p><span>КОСМЕТИЧЕСКИЙ РЕМОНТ</span><br>Освежите интерьер без лишних затрат и пыли.</p>
+                <button class="button" onclick="openModal({
+                    title: 'Косметический ремонт',
+                    images: ['img/1.png'],
+                    features: ['Цена: от 2 500 ₽/м²', 'Срок: от 5 дней', 'Гарантия: 12 месяцев'],
+                    works: ['Демонтаж старых покрытий', 'Шпаклевка стен', 'Поклейка обоев / покраска', 'Укладка ламината или линолеума']
+                })">Подробнее</button>
+            </article>
+            <article>
+                <img src="img/2.png" alt="КАПИТАЛЬНЫЙ РЕМОНТ">
+                <p><span>КАПИТАЛЬНЫЙ РЕМОНТ</span><br>Полное обновление всех систем и конструкций.</p>
+                <button class="button" onclick="openModal({
+                    title: 'Капитальный ремонт',
+                    images: ['img/2.png'],
+                    features: ['Цена: от 6 000 ₽/м²', 'Срок: от 1.5 месяцев', 'Гарантия: 3 года'],
+                    works: ['Замена электропроводки', 'Замена труб и сантехники', 'Выравнивание пола и стен', 'Монтаж потолков']
+                })">Подробнее</button>
+            </article>
+            <article>
+                <img src="img/3.png" alt="ДИЗАЙН-ПРОЕКТ">
+                <p><span>ДИЗАЙН-ПРОЕКТ</span><br>Визуализация вашей мечты перед началом работ.</p>
+                <button class="button" onclick="openModal({
+                    title: 'Дизайн-проект',
+                    images: ['img/3.png'],
+                    features: ['Цена: от 1 000 ₽/м²', 'Срок: от 2 недель', 'Состав: 3D и чертежи'],
+                    works: ['Планировочное решение', 'Подбор материалов', 'Схема освещения и розеток', 'Фотореалистичные рендеры']
+                })">Подробнее</button>
+            </article>
+        </div>
         </div>
         <div id="portfolio" class="dark-section" class="reveal">
             <h2>Портфолио</h2>
@@ -231,6 +246,38 @@
             </div>
             </div>
         </div>
+        <div id="calculator" class="dark-section">
+        <h2>Рассчитать стоимость ремонта</h2>
+        <div class="calc-container">
+            <div class="calc-group">
+                <label for="repair-type">Тип ремонта:</label>
+                <select id="repair-type">
+                    <option value="2500">Косметический (от 2 500 ₽/м²)</option>
+                    <option value="6000">Капитальный (от 6 000 ₽/м²)</option>
+                    <option value="1000">Дизайн-проект (от 1 000 ₽/м²)</option>
+                </select>
+            </div>
+
+            <div class="calc-group">
+                <label for="area">Площадь квартиры (м²):</label>
+                <input type="number" id="area" value="40" min="1" max="500">
+                <input type="range" id="area-range" min="1" max="200" value="40">
+            </div>
+
+            <div class="calc-group checkboxes">
+                <p>Дополнительно:</p>
+                <label><input type="checkbox" class="extra-option" value="500"> Черновые материалы (+500 ₽/м²)</label>
+                <label><input type="checkbox" class="extra-option" value="1500"> Замена электрики (+1 500 ₽/м²)</label>
+            </div>
+
+            <div class="calc-result">
+                <h3>Предварительная стоимость:</h3>
+                <span id="total-price">100 000</span> ₽
+            </div>
+            
+            <button class="button" id="button-calc" onclick="document.getElementById('contacts').scrollIntoView()">Оставить заявку</button>
+        </div>
+    </div>
         <a class="button-up" href="#"><img src="img/left_button.svg" alt="Наверх"></a>
             <footer class="dark-section">
                     <p style="color: white;">© 2026 Добрый мастер</p>
