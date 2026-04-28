@@ -170,6 +170,11 @@ const observer = new IntersectionObserver((entries) => {
                 };
                 window.requestAnimationFrame(step);
             }
-
-            // Начальный расчет
             calculate();
+            document.getElementById('calc-price').addEventListener('click', function(e) {
+                e.preventDefault();
+                const calculatorSection = document.querySelector('#calculator');
+                if (calculatorSection) {
+                    calculatorSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
