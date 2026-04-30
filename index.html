@@ -231,10 +231,11 @@
         <div id="contacts" class="light-section" class="reveal">
             <h2>Контакты</h2>
             <div class="contacts-content">
-            <form>
-                    <input type="text" placeholder="Ваше имя" id="name">
-                    <input type="text" placeholder="Ваш телефон" id="phone">
-                    <textarea placeholder="Ваше сообщение" id="message"></textarea>
+            <form action="https://formspree.io/f/mkoynrrn"
+  method="POST">
+                    <input type="text" placeholder="Ваше имя" id="name" name="Name">
+                    <input type="tel" placeholder="Ваш телефон" id="phone" name="Phone" inputmode="tel">
+                    <textarea placeholder="Ваше сообщение" id="message" name="Message"></textarea>
                     <button class="button">Оставить заявку</button>
             </form>
             <div class="contacts-links">
@@ -286,5 +287,21 @@
         
         
         <script src="script.js"></script>
+        <script src="https://unpkg.com/imask"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const element = document.getElementById('phone');
+                const maskOptions = {
+                    mask: '+{7} (000) 000-00-00',
+                    lazy: true, // Маска скрыта, пока поле не в фокусе
+                    placeholderChar: '_' // Символ-заполнитель, который появится при фокусе
+                };
+                
+                const mask = IMask(element, maskOptions);
+
+                // Дополнительный штрих: если пользователь убрал фокус, не введя ничего,
+                // маска снова скроется, оставляя чистый placeholder.
+            });
+        </script>
     </body>
 </html>
